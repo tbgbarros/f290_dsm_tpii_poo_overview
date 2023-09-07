@@ -25,5 +25,17 @@ public class Professor extends Usuario {
         //return retorno .concat("\nMatricula: ").concat(matricula.toString());
         return String.format("%s\nMatricula: %s", super.toString(), matricula);
     }
+
+    @Override
+    public void autenticar(String username, String senha) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Metodo  implementado  'autenticar'");
+    }
+
+    public void aplicarAvaliacao(List<Aluo> alunos) {
+        alunos.forEach(aluno -> {
+            
+        }
+    }
     
 }

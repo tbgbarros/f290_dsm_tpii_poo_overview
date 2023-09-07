@@ -7,7 +7,7 @@ import java.util.Objects;
 /*
  * uma classe é uma estrutura que define atributos e comportamentos.
  */
-public class Usuario {
+public abstract class Usuario {
   // Atributos: nome, telefone, email, github
 
   /*
@@ -35,13 +35,9 @@ public class Usuario {
   }
 
   // Comportamentos
-  public void exibirDados() {
-    System.out.printf("Nome: %s.\n", nome);
-    System.out.printf("Telefone: %s.\n", telefone);
-    System.out.printf("E-mail: %s.\n", email);
-    System.out.printf("Github: %s.\n", github);
-    System.out.println();
-  }
+public abstract void autenticar(String username, String senha);
+
+
 
   public void setEmail(String novoEmail) {
     if (!novoEmail.contains("@")) {
