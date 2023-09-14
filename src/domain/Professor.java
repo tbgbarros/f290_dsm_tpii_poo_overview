@@ -21,8 +21,8 @@ public class Professor extends Usuario {
 
     @Override
     public String toString() {
-        //String retorno = super.toString();
-        //return retorno .concat("\nMatricula: ").concat(matricula.toString());
+        // String retorno = super.toString();
+        // return retorno .concat("\nMatricula: ").concat(matricula.toString());
         return String.format("%s\nMatricula: %s", super.toString(), matricula);
     }
 
@@ -32,10 +32,14 @@ public class Professor extends Usuario {
         throw new UnsupportedOperationException("Metodo  implementado  'autenticar'");
     }
 
-    public void aplicarAvaliacao(List<Aluo> alunos) {
-        alunos.forEach(aluno -> {
-            
-        }
+    // public void aplicarAvaliacao(List) {
+    // alunos.forEach(List<Aluno> alunos) {
+    // throw new UnsupportedOperationException("Metodo implementado
+    // 'aplicarAvaliacao'");
+    // }
+    // }
+
+    public void ensina(Curso curso) {
+        System.out.println();
     }
-    
 }
