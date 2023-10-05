@@ -1,36 +1,49 @@
-import domain.Usuario;
-
-import java.util.Arrays;
-
-import domain.Curso;
-import domain.Professor;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.util.List;
+
+import dao.factories.ConexaoFactory;
+import dao.factories.ContatoMySqlDAO;
+import dao.factories.IContatoDAO;
+import domain.ContatoVO;
+import repositories.ContatoInMemoryRepository;
+import repositories.ContatoMySqlRepository;
+import repositories.IContatoRepository;
+import services.ContatoService;
+import services.IContatoService;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        // criação de um objseto
 
-        System.out.println("----------------------------------------------------------------------------------------");
-        Professor professor1 = new Professor("chaves", "19999887766", "jose@hotmail.om", "tbgbarros", 9988);
-        System.out.println("----------------------------------------------------------------------------------------");
-        Professor professor2 = new Professor("madruga", "19999887766", "XXXXXXXXXXXXXXX", "tbgbarros", 9988);
-        System.out.println("----------------------");
-        // System.out.println(usuario1 instanceof ISoneto);-
-        // System.out.println("----------------------");
-        System.out.println(professor2 instanceof Usuario);
-        System.out.println("----------------------");
-        System.out.println(professor1);
-        System.out.println("----------------------");
-        // Usuario usuario2 = new Usuario();
+        // Connection conexao = ConexaoFactory.getConexao();
+        // IContatoDAO dao = new ContatoMySqlDAO(conexao);
+        // IContatoRepository repository = new ContatoMySqlRepository(dao);
+        IContatoRepository repository = new ContatoInMemoryRepository();
 
-        // usuario1.autenticar("user", "123");
+        IContatoService service = new ContatoService(repository);
 
-        String nomeCurso = "Desenvolvimento";
-        List<String> Lista_de_conhecimentos = Arrays.asList("Java", "Python", "C++");
+        //TODO criar objeto contatoVO e realizar chamada do metodo salvar de service 
+        ContatoVO contato1 = new ContatoVO(
+        null, 
+        "Jose Joaquim", 
+        "jose@gmail.com", 
+        "19998763456", 
+        "JoseJoka");
 
-        Curso curso = new Curso(nomeCurso, Lista_de_conhecimentos);
-        professor1.ensina(curso);
+        service.salvar(contato1);
 
-        System.out.println(curso);
+        //busca contatos na base cadastrada
+        List<ContatoVO> contatos = service.buscarTodos();
+        System.out.println(contatos);
+
+
+
+        // ResultSet rst = ConexaoFactory.getConexao()
+        //         .createStatement()
+        //         .executeQuery("select version() as versao;");
+
+        // if(rst.next()) {
+        //     System.out.println(rst.getString("versao"));
+        // }
     }
 }
